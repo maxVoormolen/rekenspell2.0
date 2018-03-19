@@ -5,22 +5,25 @@ const result = document.getElementById('result');
 let assignments = [];
 
 let counter = 0;
-let maxNumber = 2;
+let maxNumber = 10;
 
+
+console.log("hallo wereld")
 myInput.focus();
 
-myAssignment.innerHTML = "en nu staat er wat anders"
 
 myInput.addEventListener('keydown',inputHandler,false);
 
 function inputHandler(evt){
   if(evt.keyCode == 13){
-    counter++;
+
     if(counter <maxNumber ){
       assignments[counter].yourAns = myInput.value;
-      myAssignment.innerHTML= assignments[counter].numA + " * " + assignments[counter].numB;
+      console.log(assignments[counter])
+      counter++;
+      myAssignment.innerHTML = assignments[counter].numA + " * " + assignments[counter].numB;
     } else {
-      // doe wat anders
+
       finish();
     }
     myInput.value = "";
@@ -47,11 +50,7 @@ for (i=0; i < maxNumber; i++){
   assignments.push(makeSum());
 
 }
-myAssignment.innerHTML= assignments[counter].numA + " * " + assignments[counter].numB;
-if (counter == 1){
-  myInput.type="hidden"; // dit werkt niet
-  result.innerHTML = assignments;
-}
+
 
 
 function finish(){
@@ -59,6 +58,7 @@ function finish(){
   myAssignment.innerHTML = "";
   myInput.style.display = "none";
   for (var i = 0; i < assignments.length; i++) {
-    result.innerHTML += assignments[i].numA + "x" + assignments[i].numB + "<br>";
+    result.innerHTML += assignments[i].numA + "x" + assignments[i].numB + " = " + assignments[i].ans + " and your awnser was: " + assignments[i].yourAns + "<br>";
   }
 }
+myAssignment.innerHTML = assignments[counter].numA + " * " + assignments[counter].numB;
